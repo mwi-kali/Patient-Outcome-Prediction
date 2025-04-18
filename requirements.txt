@@ -1,0 +1,23 @@
+# Core scientific stack
+numpy
+pandas
+scikit‑learn
+scipy
+statsmodels
+
+# Visualization & dashboards
+plotly
+dash
+dash‑bootstrap‑components
+
+# Model development
+optuna
+lifelines
+lime
+shap
+
+# Data access
+ucimlrepo
+
+# Optional (for notebook authors / dev work)
+jupyterlab
