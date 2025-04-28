@@ -1,18 +1,10 @@
-# Heart‑Failure Patient‑Outcome Prediction
+# Heart-Failure Patient Outcome Prediction
 
-An end‑to‑end **machine‑learning and survival‑analysis** pipeline that:
-
-1. **Ingests** the UCI *Heart Failure Clinical Records* dataset programmatically  
-2. Performs leakage‑free **pre‑processing and feature engineering**  
-3. Leverages **nested cross‑validation + Optuna** for robust model selection  
-4. Evaluates reliability with **calibration curves & statistical tests**  
-5. Adds longitudinal **survival analysis** (Kaplan–Meier & CoxPH)  
-6. Provides global / local **explainability** via SHAP & LIME  
-7. Delivers results through a **Dash + Bootstrap** interactive dashboard
+An end-to-end **machine-learning & survival-analysis** pipeline for predicting outcomes in heart-failure patients. 
 
 ---
 
-## Repository layout
+## Repository Structure
 
 ```
 .
@@ -31,51 +23,45 @@ An end‑to‑end **machine‑learning and survival‑analysis** pipeline that:
 │   ├─ dashboard.py      
 │   └─ main.py              #
 ├── requirements.txt
-└── README.md
+└── README.md                   
 ```
 
 ---
 
-## Quick‑start
+## Quick Start
 
-```bash
-# 1. Clone
-git clone https://github.com/your‑handle/Patient‑Outcome‑Prediction.git
-cd Patient‑Outcome‑Prediction
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your-handle/Patient-Outcome-Prediction.git
+   cd Patient-Outcome-Prediction
+   ```
 
-# 2. (Optional) create a virtual environment
-python -m venv .venv
-source .venv/bin/activate      # Windows: .venv\Scripts\activate
+2. **(Optional) Set up a virtual environment**  
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate      # Windows: .venv\Scripts\activate
+   ```
 
-# 3. Install dependencies
-pip install -r requirements.txt
+3. **Install dependencies**  
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# 4. Run the full pipeline & launch dashboard
-python -m src.main
-# → open http://127.0.0.1:8050  🌐
-```
-
----
-
-## Key design choices
-
-| Layer | Rationale |
-|-------|-----------|
-| **Programmatic data pull** | `ucimlrepo` guarantees the latest dataset without bundling raw CSVs. |
-| **Pipeline‑based preprocessing** | `ColumnTransformer` prevents data‑leakage and keeps notebooks tidy. |
-| **Nested CV + Optuna** | Outer 5‑fold measures generalisation; inner 3‑fold tunes hyper‑parameters via TPE. |
-| **Calibration** | `CalibratedClassifierCV` + Brier Score ensure probabilities are decision‑grade. |
-| **Survival modelling** | `lifelines` extends analysis beyond binary labels into time‑to‑event outcomes. |
-| **Explainability** | SHAP (global) + LIME (local) build clinician trust and case‑level insight. |
-| **Dash UI** | All‑Python, lightweight, easily deployable, Bootstrap‑styled for a professional look. |
+4. **Run the full pipeline & launch the dashboard**  
+   ```bash
+   python -m src.main
+   ```
+   Then open [http://127.0.0.1:8050](http://127.0.0.1:8050) in your browser.
 
 ---
 
-## Reproducing study metrics
+
+## Reproducing Experiments
 
 ```bash
-# Re‑run Optuna with 50 trials
+# 1. Re-run hyperparameter optimization (50 Optuna trials)
 python -m src.modeling --trials 50
-# Evaluate on hold‑out set
+
+# 2. Evaluate final models on a held-out test set
 python -m src.evaluation
 ```
