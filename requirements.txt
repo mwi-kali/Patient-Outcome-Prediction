@@ -1,14 +1,14 @@
 # Core scientific stack
 numpy
 pandas
-scikit‑learn
+scikit-learn
 scipy
 statsmodels
 
 # Visualization & dashboards
 plotly
 dash
-dash‑bootstrap‑components
+dash-bootstrap-components
 
 # Model development
 optuna

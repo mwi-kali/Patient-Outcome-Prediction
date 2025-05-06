@@ -1,11 +1,7 @@
 import plotly.graph_objects as go
 
 from sklearn.calibration import calibration_curve
-from sklearn.metrics import (
-    f1_score, roc_auc_score, brier_score_loss,
-    precision_recall_fscore_support, roc_curve,
-    confusion_matrix
-)
+from sklearn.metrics import brier_score_loss, confusion_matrix, f1_score, precision_recall_fscore_support, roc_auc_score, roc_curve
 
 
 def compute_metrics(pipe, X_test, y_test):
@@ -51,8 +47,7 @@ def plot_roc(pipe, X_test, y_test):
     auc = roc_auc_score(y_test, y_prob)
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=fpr, y=tpr, mode='lines', name=f'AUC={auc:.2f}', line=dict(color='#1f77b4', width=3)))
-    fig.add_shape(type='line', x0=0, y0=0, x1=1, y1=1,
-                  line=dict(dash='dash', color='gray'))
+    fig.add_shape(type='line', x0=0, y0=0, x1=1, y1=1, line=dict(dash='dash', color='gray'))
     fig.update_layout(
         title='ROC Curve', xaxis_title='False Positive Rate', yaxis_title='True Positive Rate',
         template='plotly_white'

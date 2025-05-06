@@ -6,7 +6,6 @@ from dash import html
 from plotly.subplots import make_subplots
 
 
-
 def add_age_quartile(df, n_quartiles=4):
     df = df.copy()
     df['age_group'] = pd.qcut(
